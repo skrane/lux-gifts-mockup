@@ -28,5 +28,6 @@ view and checkout all work in the browser only, and prices are placeholders.
 
 ## Shareable link
 
-Published as a private claude.ai page: https://claude.ai/artifact/VLZUGXUuRwVSJEXwybaMjh
+Public link (GitHub Pages, repo is public): https://skrane.github.io/lux-gifts-mockup/
+Also published as a private claude.ai page: https://claude.ai/artifact/VLZUGXUuRwVSJEXwybaMjh
 To update it after editing index.html, publish the same file to that URL with the Artifact tool.
