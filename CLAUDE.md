@@ -25,3 +25,8 @@ view and checkout all work in the browser only, and prices are placeholders.
 - Policies shown in the mockup (30-day returns, free gift wrap, free shipping over $99) are
   recommendations, not the store's current policies. Flag this if Steven shares it with
   the owner.
+
+## Shareable link
+
+Published as a private claude.ai page: https://claude.ai/artifact/VLZUGXUuRwVSJEXwybaMjh
+To update it after editing index.html, publish the same file to that URL with the Artifact tool.
