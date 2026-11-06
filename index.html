@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>LuxGiftsnGoods | Luxury Gifts for Every Celebration (Redesign Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#5b2a5e; --plum-dark:#3f1b42; --plum-light:#f3ecf4;
+    --green:#2f8f5b; --green-dark:#226d44; --green-light:#e6f4ec;
+    --gold:#c9a24a; --gold-light:#f8f1dd;
+    --ink:#1f1a22; --muted:#6b6470; --line:#e8e3ea; --bg:#fbf9fc; --white:#fff;
+    --radius:14px; --shadow:0 10px 30px rgba(63,27,66,.08);
+    --font-serif:'Cormorant Garamond',Georgia,serif; --font-sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+  h1,h2,h3,.serif{font-family:var(--font-serif);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+  h2{font-size:clamp(28px,3.6vw,42px);color:var(--plum-dark)}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+  .sub{color:var(--muted);font-size:17px;max-width:620px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.2s;white-space:nowrap}
+  .btn-primary{background:var(--plum);color:#fff}
+  .btn-primary:hover{background:var(--plum-dark);transform:translateY(-1px)}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-green:hover{background:var(--green-dark)}
+  .btn-outline{border:1.5px solid var(--plum);color:var(--plum);background:#fff}
+  .btn-outline:hover{background:var(--plum-light)}
+  .btn-light{background:#fff;color:var(--plum-dark)}
+  .btn-block{width:100%}
+  section{padding:72px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+  .section-head a.more{color:var(--plum);font-weight:600;font-size:15px;border-bottom:1.5px solid var(--plum)}
+
+  /* Promo bar */
+  .promo{background:var(--plum-dark);color:#fff;font-size:13px;text-align:center;padding:9px 16px}
+  .promo b{color:var(--gold)}
+  .promo span{margin:0 14px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .header-row{display:flex;align-items:center;gap:28px;height:76px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo .mark{width:46px;height:46px;border:2.5px solid var(--green);border-radius:8px;display:grid;place-items:center;font-family:var(--font-serif);font-weight:700;font-size:15px;line-height:1;color:var(--green);letter-spacing:.02em}
+  .logo .mark small{display:block;font-size:9px;font-family:var(--font-sans);font-weight:700}
+  .logo .word{font-family:var(--font-serif);font-size:26px;font-weight:700;color:var(--plum);line-height:1}
+  .logo .word em{font-style:normal;color:var(--green)}
+  .logo .tag{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .search{flex:1;max-width:460px;position:relative}
+  .search input{width:100%;padding:12px 18px 12px 44px;border:1.5px solid var(--line);border-radius:999px;font:inherit;font-size:14px;background:var(--bg)}
+  .search input:focus{outline:none;border-color:var(--plum);background:#fff}
+  .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--muted)}
+  .header-actions{margin-left:auto;display:flex;align-items:center;gap:6px}
+  .icon-btn{display:flex;align-items:center;gap:7px;padding:10px 12px;border-radius:999px;font-size:14px;font-weight:500;position:relative}
+  .icon-btn:hover{background:var(--plum-light)}
+  .icon-btn svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.8}
+  .cart-count{position:absolute;top:4px;right:6px;background:var(--green);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:999px;display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:.2s}
+  .cart-count.show{transform:scale(1)}
+  nav.main{border-top:1px solid var(--line)}
+  nav.main ul{display:flex;gap:4px;list-style:none;justify-content:center}
+  nav.main a{display:block;padding:13px 16px;font-size:14.5px;font-weight:500;color:var(--ink);border-bottom:2px solid transparent}
+  nav.main a:hover{color:var(--plum);border-color:var(--plum)}
+  nav.main a.hot{color:var(--green);font-weight:600}
+  .burger{display:none}
+  .mobile-nav{display:none}
+
+  /* Hero */
+  .hero{padding:0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
+  .hero-copy{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:center}
+  .hero h1{font-size:clamp(42px,5.6vw,68px);color:var(--plum-dark);margin:0 0 20px}
+  .hero h1 em{font-style:italic;color:var(--green)}
+  .hero p{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-proof{display:flex;align-items:center;gap:12px;margin-top:34px;font-size:14px;color:var(--muted)}
+  .stars{color:var(--gold);letter-spacing:2px;font-size:16px}
+  .hero-visual{position:relative;background:linear-gradient(135deg,var(--plum-light),var(--gold-light) 60%,var(--green-light));border-radius:0 0 0 80px;overflow:hidden}
+  .hero-tiles{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;padding:40px}
+  .hero-tile{border-radius:20px;display:flex;align-items:end;padding:18px;color:#fff;font-weight:600;font-size:15px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .hero-tile .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:90px;opacity:.95}
+  .hero-tile span{position:relative;z-index:1;background:rgba(0,0,0,.35);padding:5px 10px;border-radius:8px;backdrop-filter:blur(6px)}
+  .hero-tile:nth-child(1){background:linear-gradient(160deg,#6b3a6f,#3f1b42);grid-row:span 2}
+  .hero-tile:nth-child(2){background:linear-gradient(160deg,#3ca56b,#226d44)}
+  .hero-tile:nth-child(3){background:linear-gradient(160deg,#d9b25c,#a8822e)}
+
+  /* Trust strip */
+  .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
+  .trust .container{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .trust .container>div{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink)}
+  .trust svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8;flex-shrink:0}
+  .trust b{display:block;font-size:14px}
+  .trust small{color:var(--muted)}
+
+  /* Gift finder */
+  .finder{background:var(--plum-dark);color:#fff;padding:56px 0}
+  .finder-inner{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center}
+  .finder h2{color:#fff}
+  .finder p{color:rgba(255,255,255,.75);margin-top:10px}
+  .finder-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;background:rgba(255,255,255,.08);padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.15)}
+  .finder label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);display:block;margin-bottom:6px}
+  .finder select{width:100%;padding:12px 14px;border-radius:10px;border:0;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+  .finder .btn{align-self:end;height:46px}
+
+  /* Categories */
+  .cats{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .cat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 14px 20px;text-align:center;transition:.2s;cursor:pointer}
+  .cat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--plum-light)}
+  .cat .ico{font-size:40px;margin-bottom:12px}
+  .cat b{display:block;font-size:15px;color:var(--plum-dark)}
+  .cat small{color:var(--muted);font-size:12.5px}
+
+  /* Products */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .chip{padding:9px 16px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:14px;font-weight:500;transition:.15s}
+  .chip:hover{border-color:var(--plum)}
+  .chip.active{background:var(--plum);border-color:var(--plum);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.2s;position:relative}
+  .card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .card .img{aspect-ratio:1;display:grid;place-items:center;font-size:84px;position:relative}
+  .card .badge{position:absolute;top:12px;left:12px;background:var(--green);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:6px}
+  .card .badge.gold{background:var(--gold);color:var(--plum-dark)}
+  .card .wish{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.9);display:grid;place-items:center;font-size:16px;transition:.15s}
+  .card .wish:hover{transform:scale(1.1)}
+  .card .wish.on{color:#d23c6c}
+  .card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card .brand{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+  .card h3{font-family:var(--font-sans);font-size:15.5px;font-weight:600;line-height:1.3;color:var(--ink)}
+  .card .rating{font-size:12.5px;color:var(--muted)}
+  .card .rating span{color:var(--gold)}
+  .card .price-row{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:8px}
+  .card .price{font-weight:700;font-size:17px;color:var(--plum-dark)}
+  .card .was{color:var(--muted);text-decoration:line-through;font-size:13px}
+  .card .add{margin-top:10px;width:100%;padding:11px;border-radius:10px;background:var(--plum-light);color:var(--plum-dark);font-weight:600;font-size:14px;transition:.15s}
+  .card .add:hover{background:var(--plum);color:#fff}
+  .card .add.done{background:var(--green);color:#fff}
+  .empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted);background:#fff;border-radius:var(--radius);border:1px dashed var(--line)}
+
+  /* Occasions */
+  .occ-wrap{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .occ{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .occ a{display:block;border-radius:var(--radius);padding:28px 22px;min-height:160px;color:#fff;position:relative;overflow:hidden;transition:.2s}
+  .occ a:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .occ a b{font-family:var(--font-serif);font-size:26px;display:block}
+  .occ a small{opacity:.85;font-size:13px}
+  .occ a span{position:absolute;right:16px;bottom:10px;font-size:54px;opacity:.9}
+  .occ .o1{background:linear-gradient(140deg,#7a3f7e,#3f1b42)}
+  .occ .o2{background:linear-gradient(140deg,#c54b7a,#8e2c55)}
+  .occ .o3{background:linear-gradient(140deg,#3ca56b,#1f5f3a)}
+  .occ .o4{background:linear-gradient(140deg,#d9b25c,#9a7324)}
+
+  /* Services */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+  .svc .ico{width:50px;height:50px;border-radius:12px;background:var(--green-light);display:grid;place-items:center;font-size:24px;margin-bottom:18px}
+  .svc h3{font-family:var(--font-sans);font-size:18px;font-weight:600;margin-bottom:8px}
+  .svc p{color:var(--muted);font-size:15px}
+
+  /* Story */
+  .story{background:var(--plum-light)}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .story-img{aspect-ratio:4/3;border-radius:24px;background:linear-gradient(135deg,#6b3a6f,#c9a24a);display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-size:30px;text-align:center;padding:30px;box-shadow:var(--shadow)}
+  .story p{color:var(--ink);font-size:16.5px;margin-bottom:16px}
+  .story .sig{font-family:var(--font-serif);font-size:22px;color:var(--plum);margin-top:8px}
+
+  /* Reviews */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .rev p{font-size:15px;margin:10px 0 14px}
+  .rev b{font-size:14px}
+  .rev small{color:var(--muted);display:block}
+  .google-pill{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px}
+
+  /* Newsletter */
+  .news{background:var(--green-dark);color:#fff;text-align:center}
+  .news h2{color:#fff}
+  .news p{color:rgba(255,255,255,.8);margin:10px auto 26px;max-width:520px}
+  .news form{display:flex;gap:10px;max-width:520px;margin:0 auto}
+  .news input{flex:1;padding:14px 18px;border-radius:999px;border:0;font:inherit;font-size:15px}
+
+  /* Footer */
+  footer{background:var(--plum-dark);color:rgba(255,255,255,.8);padding:60px 0 30px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  footer h4{color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px}
+  footer a:hover{color:#fff}
+  footer .logo .word{color:#fff}
+  footer .logo .mark{border-color:#7fd1a0;color:#7fd1a0}
+  footer .logo .tag{color:rgba(255,255,255,.6)}
+  .social{display:flex;gap:10px;margin-top:18px}
+  .social a{width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:12px;font-weight:700}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(255,255,255,.55)}
+
+  /* Cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(31,26,34,.5);z-index:90;opacity:0;pointer-events:none;transition:.25s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:#fff;z-index:100;transform:translateX(100%);transition:.3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+  .drawer.open{transform:none}
+  .drawer-head{padding:20px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .drawer-head h3{font-family:var(--font-sans);font-size:18px}
+  .close{width:36px;height:36px;border-radius:999px;display:grid;place-items:center;font-size:20px}
+  .close:hover{background:var(--plum-light)}
+  .ship-bar{padding:14px 24px;background:var(--green-light);font-size:13.5px;color:var(--green-dark)}
+  .ship-bar .track{height:6px;background:#fff;border-radius:999px;margin-top:8px;overflow:hidden}
+  .ship-bar .fill{height:100%;background:var(--green);transition:.3s;border-radius:999px}
+  .drawer-body{flex:1;overflow:auto;padding:16px 24px}
+  .line{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .line .thumb{width:70px;height:70px;border-radius:10px;display:grid;place-items:center;font-size:34px;flex-shrink:0}
+  .line .info{flex:1}
+  .line .info b{font-size:14px;display:block}
+  .line .info small{color:var(--muted)}
+  .qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;margin-top:8px}
+  .qty button{width:30px;height:30px;font-size:16px}
+  .qty span{min-width:26px;text-align:center;font-size:14px;font-weight:600}
+  .line .lp{font-weight:700;text-align:right}
+  .line .rm{display:block;font-size:12px;color:var(--muted);margin-top:8px;text-decoration:underline}
+  .cart-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+  .cart-empty .big{font-size:60px;margin-bottom:12px}
+  .gift-opt{margin-top:16px;background:var(--gold-light);border-radius:12px;padding:14px;font-size:14px}
+  .gift-opt label{display:flex;gap:10px;align-items:center;font-weight:600;cursor:pointer}
+  .gift-opt textarea{width:100%;margin-top:10px;padding:10px;border:1.5px solid var(--line);border-radius:8px;font:inherit;font-size:14px;resize:vertical}
+  .drawer-foot{padding:18px 24px 24px;border-top:1px solid var(--line);background:#fff}
+  .tot{display:flex;justify-content:space-between;font-size:15px;margin-bottom:6px;color:var(--muted)}
+  .tot.grand{font-size:19px;font-weight:700;color:var(--ink);margin:10px 0 14px}
+  .express{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+  .express button{padding:11px;border-radius:10px;font-weight:700;font-size:13px;border:1.5px solid var(--line);background:#fff}
+  .express .ap{background:#000;color:#fff;border-color:#000}
+  .express .pp{background:#ffc439;color:#003087}
+  .express .sp{background:#5a31f4;color:#fff;border-color:#5a31f4}
+
+  /* Modals */
+  .modal{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:20px;max-width:720px;width:100%;max-height:92vh;overflow:auto;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+  .modal-box .close{position:absolute;top:14px;right:14px;z-index:2;background:#fff}
+  .qv{display:grid;grid-template-columns:1fr 1fr}
+  .qv .img{aspect-ratio:1;display:grid;place-items:center;font-size:140px;border-radius:20px 0 0 20px}
+  .qv .body{padding:36px 32px}
+  .qv h3{font-size:28px;margin:6px 0 10px;color:var(--plum-dark)}
+  .qv .price{font-size:24px;font-weight:700;color:var(--plum-dark);margin:10px 0 16px}
+  .qv p{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .qv ul{list-style:none;font-size:14px;margin-bottom:22px}
+  .qv li{padding:5px 0;border-bottom:1px dashed var(--line)}
+  .qv li::before{content:"✓ ";color:var(--green);font-weight:700}
+  .checkout{padding:36px}
+  .checkout h3{font-size:30px;color:var(--plum-dark);margin-bottom:6px}
+  .steps{display:flex;gap:8px;margin:18px 0 26px;font-size:13px;color:var(--muted)}
+  .steps span{padding:6px 12px;border-radius:999px;background:var(--bg)}
+  .steps span.on{background:var(--plum);color:#fff;font-weight:600}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fgrid .full{grid-column:1/-1}
+  .checkout input,.checkout select{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#fff}
+  .checkout input:focus{outline:none;border-color:var(--plum)}
+  .checkout h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+  .ship-opts label{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;font-size:14.5px}
+  .ship-opts label:has(input:checked){border-color:var(--plum);background:var(--plum-light)}
+  .ship-opts input{width:auto;margin-right:10px}
+  .summary{background:var(--bg);border-radius:14px;padding:18px;margin-top:24px}
+  .summary .tot{margin-bottom:8px}
+  .secure{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
+  .thanks{text-align:center;padding:60px 36px}
+  .thanks .big{font-size:70px;margin-bottom:14px}
+  .thanks h3{font-size:34px;color:var(--plum-dark);margin-bottom:10px}
+  .thanks p{color:var(--muted);margin-bottom:8px}
+  .thanks .order{display:inline-block;background:var(--green-light);color:var(--green-dark);padding:8px 16px;border-radius:999px;font-weight:700;margin:14px 0 24px}
+
+  /* Toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;z-index:120;transition:.3s;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
+  .toast.show{transform:translate(-50%,0)}
+  .toast button{color:#7fd1a0;font-weight:700}
+
+  /* Mockup banner */
+  .mock-note{position:fixed;left:14px;bottom:14px;z-index:60;background:var(--gold);color:var(--plum-dark);font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;box-shadow:var(--shadow)}
+
+  @media (max-width:1000px){
+    .cats{grid-template-columns:repeat(3,1fr)}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .trust .container{grid-template-columns:repeat(2,1fr)}
+    .finder-inner{grid-template-columns:1fr}
+    .finder-form{grid-template-columns:1fr 1fr}
+    .finder .btn{grid-column:1/-1}
+    .occ,.services,.reviews{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-copy{padding:56px 0 40px}
+    .hero-visual{min-height:380px;border-radius:24px}
+  }
+  @media (max-width:720px){
+    section{padding:52px 0}
+    .search{display:none}
+    .icon-btn .lbl{display:none}
+    nav.main{display:none}
+    .burger{display:flex}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid var(--line)}
+    .mobile-nav.open{display:block}
+    .mobile-nav a{display:block;padding:14px 20px;border-bottom:1px solid var(--line);font-weight:500}
+    .cats{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .card .img{font-size:60px}
+    .occ,.services,.reviews,.story-grid,.foot-grid{grid-template-columns:1fr}
+    .qv{grid-template-columns:1fr}
+    .qv .img{border-radius:20px 20px 0 0;font-size:100px}
+    .fgrid{grid-template-columns:1fr}
+    .news form{flex-direction:column}
+    .promo span:nth-child(2){display:none}
+    .mock-note{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="promo"><span>🎁 <b>15% off</b> your first order with code <b>WELCOME15</b></span><span>|</span><span>🚚 <b>Free shipping</b> on orders over $99</span></div>
+
+<header>
+  <div class="container">
+    <div class="header-row">
+      <button class="icon-btn burger" onclick="document.getElementById('mnav').classList.toggle('open')" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a href="#" class="logo" aria-label="LuxGiftsnGoods home">
+        <div class="mark">LG<small>nG</small></div>
+        <div><div class="word">Lux<em>Gifts</em>nGoods</div><div class="tag">Curated gifts for every celebration</div></div>
+      </a>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="q" placeholder="Search gifts, brands or occasions…" oninput="searchProducts(this.value)">
+      </div>
+      <div class="header-actions">
+        <a class="icon-btn" href="#help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg><span class="lbl">Help</span></a>
+        <a class="icon-btn" href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span class="lbl">Account</span></a>
+        <button class="icon-btn" onclick="openCart()" aria-label="Open cart"><svg viewBox="0 0 24 24"><path d="M6 8h12l1 13H5L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="lbl">Cart</span><span class="cart-count" id="cartCount">0</span></button>
+      </div>
+    </div>
+  </div>
+  <nav class="main"><div class="container"><ul>
+    <li><a href="#shop" onclick="setFilter('all')">Shop All</a></li>
+    <li><a href="#shop" onclick="setFilter('her')">For Her</a></li>
+    <li><a href="#shop" onclick="setFilter('him')">For Him</a></li>
+    <li><a href="#shop" onclick="setFilter('home')">Home &amp; Entertaining</a></li>
+    <li><a href="#shop" onclick="setFilter('baby')">Baby &amp; Kids</a></li>
+    <li><a href="#shop" onclick="setFilter('pets')">Pets</a></li>
+    <li><a href="#shop" onclick="setFilter('food')">Food &amp; Wellness</a></li>
+    <li><a href="#occasions">Occasions</a></li>
+    <li><a href="#services">Registry</a></li>
+    <li><a href="#shop" class="hot" onclick="setFilter('new')">New Arrivals</a></li>
+  </ul></div></nav>
+  <div class="mobile-nav" id="mnav">
+    <a href="#shop" onclick="setFilter('all');closeMnav()">Shop All</a>
+    <a href="#shop" onclick="setFilter('her');closeMnav()">For Her</a>
+    <a href="#shop" onclick="setFilter('him');closeMnav()">For Him</a>
+    <a href="#shop" onclick="setFilter('home');closeMnav()">Home &amp; Entertaining</a>
+    <a href="#shop" onclick="setFilter('baby');closeMnav()">Baby &amp; Kids</a>
+    <a href="#shop" onclick="setFilter('pets');closeMnav()">Pets</a>
+    <a href="#shop" onclick="setFilter('food');closeMnav()">Food &amp; Wellness</a>
+    <a href="#occasions" onclick="closeMnav()">Occasions</a>
+    <a href="#services" onclick="closeMnav()">Registry &amp; Corporate</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Nashville's curated gift boutique, online</div>
+        <h1>Luxury gifts for <em>every</em> celebration.</h1>
+        <p>Hand-picked pieces for the people you love, from heirloom barware to sterling silver and spoiled-pet treats. Gift wrapped, personally noted, and at your door in days.</p>
+        <div class="hero-ctas">
+          <a href="#finder" class="btn btn-primary">Find the perfect gift</a>
+          <a href="#shop" class="btn btn-outline" onclick="setFilter('new')">Shop new arrivals</a>
+        </div>
+        <div class="hero-proof"><span class="stars">★★★★★</span><span><b>Rated Excellent</b> on Google · 32 reviews</span></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-tiles">
+          <div class="hero-tile"><div class="emoji">🥂</div><span>Bar &amp; entertaining</span></div>
+          <div class="hero-tile"><div class="emoji">💍</div><span>Fine jewelry</span></div>
+          <div class="hero-tile"><div class="emoji">🐾</div><span>Spoiled pets</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust"><div class="container">
+  <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><div><b>Free shipping over $99</b><small>Most orders ship in 2 to 4 business days</small></div></div>
+  <div><svg viewBox="0 0 24 24"><path d="M20 7H4v13h16zM4 7l2-4h12l2 4M12 7v13"/></svg><div><b>Complimentary gift wrap</b><small>Add a handwritten note at checkout</small></div></div>
+  <div><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg><div><b>30-day easy returns</b><small>Wrong size or changed your mind? No problem</small></div></div>
+  <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 16 0v5a2 2 0 0 1-2 2h-2v-6h4M4 12v5a2 2 0 0 0 2 2h2v-6H4"/></svg><div><b>Real people, real help</b><small>1-800-557-3795 · Mon to Fri 9 to 6 CT</small></div></div>
+</div></div>
+
+<!-- GIFT FINDER -->
+<section class="finder" id="finder">
+  <div class="container finder-inner">
+    <div>
+      <div class="eyebrow" style="color:#7fd1a0">Gift finder</div>
+      <h2>Not sure what to get? Tell us three things.</h2>
+      <p>We will narrow hundreds of gifts down to a shortlist in seconds.</p>
+    </div>
+    <form class="finder-form" onsubmit="runFinder(event)">
+      <div><label>Who is it for?</label><select id="fWho"><option value="">Anyone</option><option value="her">Her</option><option value="him">Him</option><option value="baby">Baby or kids</option><option value="pets">A pet</option><option value="home">The host</option></select></div>
+      <div><label>Occasion</label><select id="fOcc"><option value="">Any occasion</option><option>Birthday</option><option>Anniversary</option><option>Wedding</option><option>Housewarming</option><option>Thank you</option><option>Holiday</option></select></div>
+      <div><label>Budget</label><select id="fBud"><option value="">Any budget</option><option value="50">Under $50</option><option value="100">Under $100</option><option value="200">Under $200</option><option value="9999">Splurge</option></select></div>
+      <button class="btn btn-green" type="submit">Show me gifts</button>
+    </form>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section>
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">Shop by recipient</div><h2>Who are you shopping for?</h2></div></div>
+    <div class="cats">
+      <div class="cat" onclick="setFilter('her')"><div class="ico">💎</div><b>For Her</b><small>Jewelry, handbags, beauty</small></div>
+      <div class="cat" onclick="setFilter('him')"><div class="ico">👔</div><b>For Him</b><small>Cufflinks, barware, style</small></div>
+      <div class="cat" onclick="setFilter('home')"><div class="ico">🏡</div><b>Home &amp; Host</b><small>Serveware, decor, lighting</small></div>
+      <div class="cat" onclick="setFilter('baby')"><div class="ico">🧸</div><b>Baby &amp; Kids</b><small>Keepsakes and play</small></div>
+      <div class="cat" onclick="setFilter('pets')"><div class="ico">🐶</div><b>Pets</b><small>Treats, toys, comfort</small></div>
+      <div class="cat" onclick="setFilter('food')"><div class="ico">🍵</div><b>Food &amp; Wellness</b><small>Gourmet, tea, skincare</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="shop" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="eyebrow">The collection</div><h2 id="shopTitle">Gifts they will actually keep</h2></div>
+      <span class="sub" id="shopCount" style="font-size:14px"></span>
+    </div>
+    <div class="filters" id="filters">
+      <button class="chip active" data-f="all" onclick="setFilter('all')">All</button>
+      <button class="chip" data-f="new" onclick="setFilter('new')">New arrivals</button>
+      <button class="chip" data-f="best" onclick="setFilter('best')">Bestsellers</button>
+      <button class="chip" data-f="her" onclick="setFilter('her')">For her</button>
+      <button class="chip" data-f="him" onclick="setFilter('him')">For him</button>
+      <button class="chip" data-f="home" onclick="setFilter('home')">Home &amp; host</button>
+      <button class="chip" data-f="baby" onclick="setFilter('baby')">Baby &amp; kids</button>
+      <button class="chip" data-f="pets" onclick="setFilter('pets')">Pets</button>
+      <button class="chip" data-f="food" onclick="setFilter('food')">Food &amp; wellness</button>
+      <button class="chip" data-f="under50" onclick="setFilter('under50')">Under $50</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<div class="occ-wrap" id="occasions"><section>
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">Shop by occasion</div><h2>Something coming up?</h2></div><a class="more" href="#shop" onclick="setFilter('all')">See all gifts</a></div>
+    <div class="occ">
+      <a href="#shop" class="o1" onclick="setFilter('all')"><b>Birthdays</b><small>Because a text is not a gift</small><span>🎂</span></a>
+      <a href="#shop" class="o2" onclick="setFilter('her')"><b>Anniversaries</b><small>Sterling, Roman glass, keepsakes</small><span>💝</span></a>
+      <a href="#shop" class="o3" onclick="setFilter('home')"><b>Weddings &amp; Housewarming</b><small>Pieces they will use for years</small><span>🥂</span></a>
+      <a href="#shop" class="o4" onclick="setFilter('best')"><b>Holiday Gift Guide</b><small>Our 20 most-loved gifts</small><span>🎄</span></a>
+    </div>
+  </div>
+</section></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">More than a store</div><h2>We make gifting easy.</h2></div></div>
+    <div class="services">
+      <div class="svc"><div class="ico">🎀</div><h3>Gift wrap &amp; handwritten notes</h3><p>Every order can be wrapped in our signature plum and gold paper with a card written by a real person. Pick it at checkout, no extra steps.</p></div>
+      <div class="svc"><div class="ico">📋</div><h3>Wedding &amp; baby registries</h3><p>Build a registry in minutes, share one link, and let friends and family shop from their phones. We track it all so nobody buys the same salad bowl twice.</p><a href="#" class="btn btn-outline" style="margin-top:16px;padding:10px 18px">Start a registry</a></div>
+      <div class="svc"><div class="ico">🏢</div><h3>Corporate &amp; client gifting</h3><p>Thank a team or a client list with branded, bulk-shipped gifts. Tell us the budget and headcount, we handle the rest.</p><a href="#" class="btn btn-outline" style="margin-top:16px;padding:10px 18px">Request a quote</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="container story-grid">
+    <div class="story-img">"A unique collection of brands, gifts and goods, chosen one piece at a time."</div>
+    <div>
+      <div class="eyebrow">Our story</div>
+      <h2 style="margin-bottom:18px">Curated in Nashville, shipped nationwide.</h2>
+      <p>LuxGiftsnGoods started with a simple frustration: finding a truly special gift online meant scrolling through thousands of forgettable ones. So we built the boutique we wished existed.</p>
+      <p>Every brand on this site was chosen by hand, from small American makers to heritage European houses. If we would not give it to our own family, you will not find it here.</p>
+      <div class="sig">Michael J. Mills, Founder</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">Customer love</div><h2>Rated Excellent on Google</h2></div><span class="google-pill"><b style="color:#4285f4">G</b> <span class="stars">★★★★★</span> 32 reviews</span></div>
+    <div class="reviews">
+      <div class="rev"><span class="stars">★★★★★</span><p>"Ordered the bar tool set for my son-in-law. Shipped fast, beautifully wrapped, and he has not stopped talking about it."</p><b>Karen P.</b><small>Franklin, TN · Verified buyer</small></div>
+      <div class="rev"><span class="stars">★★★★★</span><p>"The Roman glass earrings are stunning in person. Customer service answered my sizing question within the hour."</p><b>Danielle R.</b><small>Atlanta, GA · Verified buyer</small></div>
+      <div class="rev"><span class="stars">★★★★★</span><p>"Used the registry for our wedding. Guests said it was the easiest one they had ever used. Highly recommend."</p><b>Marcus &amp; Jenna T.</b><small>Nashville, TN · Verified buyer</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news">
+  <div class="container">
+    <h2>Get 15% off your first order</h2>
+    <p>Plus early access to new arrivals and our seasonal gift guides. One email a week, never more.</p>
+    <form onsubmit="event.preventDefault();toast('Welcome! Your code WELCOME15 is on its way.')"><input type="email" placeholder="Your email address" required><button class="btn btn-light" type="submit">Send my code</button></form>
+  </div>
+</section>
+
+<footer id="help">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><div class="mark">LG<small>nG</small></div><div><div class="word">Lux<em>Gifts</em>nGoods</div><div class="tag">Curated gifts for every celebration</div></div></div>
+        <p style="margin-top:18px;max-width:320px">Headquartered in Nashville, Tennessee. Shipping across the United States.</p>
+        <p style="margin-top:12px"><a href="mailto:contactus@luxgiftsngoods.com">contactus@luxgiftsngoods.com</a><br><a href="tel:18005573795">1-800-557-3795</a></p>
+        <div class="social"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">FB</a><a href="#" aria-label="Pinterest">PI</a><a href="#" aria-label="LinkedIn">LI</a></div>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="#shop">New arrivals</a></li><li><a href="#shop">Bestsellers</a></li><li><a href="#shop">For her</a></li><li><a href="#shop">For him</a></li><li><a href="#shop">Home &amp; entertaining</a></li><li><a href="#shop">Pets</a></li><li><a href="#">Brands A to Z</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="#">Track my order</a></li><li><a href="#">Shipping &amp; delivery</a></li><li><a href="#">Returns &amp; exchanges</a></li><li><a href="#">Gift wrap &amp; notes</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact us</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">Our story</a></li><li><a href="#">Registry</a></li><li><a href="#">Corporate gifting</a></li><li><a href="#">Gift guides &amp; blog</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Terms</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 LuxGiftsnGoods LLC. All rights reserved.</span><span>Secure checkout · Visa, Mastercard, Amex, PayPal, Apple Pay</span></div>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <div class="drawer-head"><h3>Your cart <span id="drawerCount" style="color:var(--muted);font-weight:400"></span></h3><button class="close" onclick="closeAll()" aria-label="Close">×</button></div>
+  <div class="ship-bar" id="shipBar"></div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</aside>
+
+<!-- QUICK VIEW -->
+<div class="modal" id="qvModal"><div class="modal-box" id="qvBox"></div></div>
+
+<!-- CHECKOUT -->
+<div class="modal" id="coModal"><div class="modal-box" id="coBox"></div></div>
+
+<div class="toast" id="toast"></div>
+<div class="mock-note">Redesign mockup · demo only · nothing is really for sale</div>
+
+<script>
+// Product catalog. Prices are placeholders for the mockup.
+const P = [
+  {id:1, name:'Old Fashioned 12-Piece Bar Tool Set', brand:'Viski', price:129, was:149, cat:['home','him','best'], emoji:'🥃', bg:'#f3ecf4', rating:4.9, n:48, new:true, desc:'Everything a home bartender needs, in brushed gold-tone stainless steel with a walnut stand. Our single most-gifted item.', bullets:['Shaker, jigger, strainer, muddler, bar spoon and more','Gift-boxed, ready to wrap','Ships in 2 business days']},
+  {id:2, name:'Sophia Salad Bowl and Tossers', brand:'Mariposa', price:88, cat:['home','best'], emoji:'🥗', bg:'#e6f4ec', rating:4.8, n:31, new:true, desc:'Hand-finished acacia bowl with sand-cast aluminum tossers. A housewarming classic.', bullets:['Food-safe, hand wash','Made by artisans in Mexico','Gift boxed']},
+  {id:3, name:'Ancient Roman Glass Drop Earrings', brand:'Hada Collection', price:145, cat:['her','best'], emoji:'💎', bg:'#f8f1dd', rating:5, n:22, desc:'Genuine 2,000-year-old Roman glass fragments set in sterling silver. Each pair is one of a kind.', bullets:['Sterling silver, nickel free','Certificate of authenticity included','Comes in a velvet pouch']},
+  {id:4, name:'Sterling Silver Knot Cufflinks', brand:'Lux Signature', price:68, cat:['him'], emoji:'🔗', bg:'#e9eef5', rating:4.7, n:19, desc:'A timeless knot design in solid sterling silver. The gift that gets worn to every wedding.', bullets:['Solid .925 sterling','Free engraving available','Gift boxed']},
+  {id:5, name:'Timmy Woods Hand-Carved Clutch', brand:'Timmy Woods', price:260, cat:['her'], emoji:'👜', bg:'#f3ecf4', rating:4.9, n:12, desc:'Beverly Hills collectible minaudière, hand carved and hand painted. A showstopper.', bullets:['Acacia wood, hand painted','Detachable chain strap','Signed and numbered']},
+  {id:6, name:'Miyagi Polarized Sunglasses', brand:'Miyagi', price:95, was:120, cat:['him','her'], emoji:'🕶️', bg:'#e6f4ec', rating:4.6, n:27, desc:'Lightweight acetate frames with polarized lenses. Unisex and effortlessly cool.', bullets:['100% UV protection','Hard case and cloth included','One-year warranty']},
+  {id:7, name:'NEAT Whiskey Glass, Set of 2', brand:'NEAT Glass', price:42, cat:['home','him','under50'], emoji:'🥂', bg:'#f8f1dd', rating:4.8, n:64, desc:'The glass that lets you smell the whiskey, not the alcohol. Engineered, patented, and loved.', bullets:['Set of two','Dishwasher safe','Gift boxed']},
+  {id:8, name:'Gourmet Tea Discovery Box', brand:'Tea Forté', price:48, cat:['food','her','under50'], emoji:'🍵', bg:'#e6f4ec', rating:4.9, n:40, desc:'Twenty hand-crafted pyramid infusers across black, green, herbal and white teas.', bullets:['20 single-steep infusers','Organic where possible','Ribbon-tied gift box']},
+  {id:9, name:'Saucy Ladies Kettle Chips Trio', brand:'Saucy Ladies', price:29, cat:['food','under50'], emoji:'🥨', bg:'#f8f1dd', rating:4.7, n:15, desc:'Three small-batch kettle chip flavors from a women-owned Tennessee kitchen.', bullets:['Three 5 oz bags','Made in Tennessee','Great add-on gift']},
+  {id:10, name:'Rosewater Skincare Ritual Set', brand:'Lux Wellness', price:76, cat:['food','her'], emoji:'🌸', bg:'#f3ecf4', rating:4.8, n:33, desc:'Cleanser, toning mist and night cream, all clean formulas with Bulgarian rose.', bullets:['Cruelty free, paraben free','Full sizes, not samples','Reusable keepsake box']},
+  {id:11, name:'Heirloom Baby Keepsake Box', brand:'Lux Signature', price:85, cat:['baby','best'], emoji:'🧸', bg:'#e9eef5', rating:5, n:28, new:true, desc:'A hand-finished wooden box with labeled compartments for first curl, hospital bracelet and more.', bullets:['Free name engraving','Solid maple','Gift wrapped on request']},
+  {id:12, name:'Wooden Rainbow Stacker', brand:'Grimm\'s', price:38, cat:['baby','under50'], emoji:'🌈', bg:'#f8f1dd', rating:4.9, n:52, desc:'The classic open-ended toy. Non-toxic water-based stains on solid lime wood.', bullets:['Ages 1 and up','Made in Germany','Safe, non-toxic finish']},
+  {id:13, name:'Spoiled Dog Treat Tower', brand:'Bocce\'s Bakery', price:45, cat:['pets','under50','best'], emoji:'🐶', bg:'#e6f4ec', rating:4.9, n:71, new:true, desc:'Three tiers of small-batch, limited-ingredient treats, stacked and ribboned like a wedding cake.', bullets:['Wheat free, no fillers','Baked in the USA','Ships with a tag for the pup\'s name']},
+  {id:14, name:'Cat Lounger and Catnip Toy Bundle', brand:'Lux Pets', price:54, cat:['pets'], emoji:'🐱', bg:'#f3ecf4', rating:4.7, n:18, desc:'A felted wool lounger and three organic catnip toys. The cat will tolerate you more.', bullets:['Hand felted wool','Organic catnip','Machine washable toys']},
+  {id:15, name:'Brass Candle Holder Trio', brand:'Lux Home', price:64, cat:['home'], emoji:'🕯️', bg:'#f8f1dd', rating:4.8, n:24, desc:'Three heights of solid brass tapers holders with an aged finish. Instant table elegance.', bullets:['Solid brass','Fits standard tapers','Gift boxed']},
+  {id:16, name:'Silk Pocket Square and Tie Bar Set', brand:'Lux Signature', price:49, cat:['him','under50'], emoji:'👔', bg:'#e9eef5', rating:4.6, n:21, desc:'Hand-rolled silk pocket square with a slim brushed tie bar. Wedding season sorted.', bullets:['100% silk','Choose from 4 colors','Gift boxed']},
+];
+const money = n => '$' + n.toFixed(2).replace(/\.00$/,'');
+let filter='all', query='', budget=0, cart=[], wishes=new Set(), giftWrap=false;
+
+const titles={all:'Gifts they will actually keep',new:'Just landed',best:'Our most-loved gifts',her:'Gifts for her',him:'Gifts for him',home:'Home and entertaining',baby:'Baby and kids',pets:'For spoiled pets',food:'Food and wellness',under50:'Great gifts under $50'};
+
+function render(){
+  let list=P.filter(p=>{
+    if(filter==='new') return p.new;
+    if(filter!=='all' && !p.cat.includes(filter)) return false;
+    return true;
+  });
+  if(budget) list=list.filter(p=>p.price<=budget);
+  if(query) list=list.filter(p=>(p.name+' '+p.brand+' '+p.cat.join(' ')).toLowerCase().includes(query));
+  document.getElementById('shopTitle').textContent = query ? 'Results for "'+query+'"' : titles[filter];
+  document.getElementById('shopCount').textContent = list.length+' gift'+(list.length===1?'':'s');
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.f===filter));
+  const g=document.getElementById('grid');
+  if(!list.length){g.innerHTML='<div class="empty">No gifts match yet. Try a different filter, or <a href="#finder" style="color:var(--plum);font-weight:600">use the gift finder</a>.</div>';return;}
+  g.innerHTML=list.map(p=>`
+    <div class="card">
+      <div class="img" style="background:${p.bg}" onclick="quickView(${p.id})" role="button" tabindex="0">${p.emoji}
+        ${p.new?'<span class="badge">New</span>':(p.cat.includes('best')?'<span class="badge gold">Bestseller</span>':'')}
+        <button class="wish ${wishes.has(p.id)?'on':''}" onclick="event.stopPropagation();wish(${p.id},this)" aria-label="Save to wishlist">${wishes.has(p.id)?'♥':'♡'}</button>
+      </div>
+      <div class="body">
+        <span class="brand">${p.brand}</span>
+        <h3 onclick="quickView(${p.id})" style="cursor:pointer">${p.name}</h3>
+        <div class="rating"><span>${'★'.repeat(Math.round(p.rating))}</span> ${p.rating} (${p.n})</div>
+        <div class="price-row"><span class="price">${money(p.price)}</span>${p.was?`<span class="was">${money(p.was)}</span>`:''}</div>
+        <button class="add" onclick="add(${p.id},this)">Add to cart</button>
+      </div>
+    </div>`).join('');
+}
+function setFilter(f){filter=f;query='';budget=0;document.getElementById('q').value='';render();{document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'})}}
+function searchProducts(v){query=v.trim().toLowerCase();filter='all';render();if(query)document.getElementById('shop').scrollIntoView({behavior:'smooth'})}
+function runFinder(e){e.preventDefault();const who=document.getElementById('fWho').value;filter=who||'all';budget=+document.getElementById('fBud').value||0;query='';document.getElementById('q').value='';render();const occ=document.getElementById('fOcc').value;document.getElementById('shopTitle').textContent='Your shortlist'+(occ?' for a '+occ.toLowerCase():'');document.getElementById('shop').scrollIntoView({behavior:'smooth'})}
+function wish(id,btn){wishes.has(id)?wishes.delete(id):wishes.add(id);btn.classList.toggle('on');btn.textContent=wishes.has(id)?'♥':'♡';toast(wishes.has(id)?'Saved to your wishlist':'Removed from wishlist')}
+function closeMnav(){document.getElementById('mnav').classList.remove('open')}
+
+// Cart
+function add(id,btn){
+  const line=cart.find(l=>l.id===id);
+  line?line.qty++:cart.push({id,qty:1});
+  if(btn){btn.textContent='Added ✓';btn.classList.add('done');setTimeout(()=>{btn.textContent='Add to cart';btn.classList.remove('done')},1400)}
+  updateCart();toast(P.find(p=>p.id===id).name+' added to cart','View cart',openCart);
+}
+function setQty(id,d){const l=cart.find(l=>l.id===id);if(!l)return;l.qty+=d;if(l.qty<=0)cart=cart.filter(x=>x.id!==id);updateCart()}
+function removeLine(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function subtotal(){return cart.reduce((s,l)=>s+P.find(p=>p.id===l.id).price*l.qty,0)}
+function count(){return cart.reduce((s,l)=>s+l.qty,0)}
+function updateCart(){
+  const c=count(), cc=document.getElementById('cartCount');
+  cc.textContent=c;cc.classList.toggle('show',c>0);
+  document.getElementById('drawerCount').textContent=c?'('+c+')':'';
+  const sub=subtotal(), left=99-sub;
+  document.getElementById('shipBar').innerHTML= c===0?'':(left>0?`Add <b>${money(left)}</b> more for <b>free shipping</b><div class="track"><div class="fill" style="width:${Math.min(100,sub/99*100)}%"></div></div>`:`🎉 You've unlocked <b>free shipping</b><div class="track"><div class="fill" style="width:100%"></div></div>`);
+  const body=document.getElementById('cartBody');
+  if(!c){body.innerHTML='<div class="cart-empty"><div class="big">🎁</div><b>Your cart is empty</b><p style="margin:8px 0 20px">Let us help you find something special.</p><button class="btn btn-primary" onclick="closeAll();setFilter(\'best\')">Shop bestsellers</button></div>';document.getElementById('cartFoot').innerHTML='';return}
+  body.innerHTML=cart.map(l=>{const p=P.find(p=>p.id===l.id);return`
+    <div class="line"><div class="thumb" style="background:${p.bg}">${p.emoji}</div>
+    <div class="info"><b>${p.name}</b><small>${p.brand}</small><div class="qty"><button onclick="setQty(${p.id},-1)">−</button><span>${l.qty}</span><button onclick="setQty(${p.id},1)">+</button></div></div>
+    <div><div class="lp">${money(p.price*l.qty)}</div><a class="rm" href="#" onclick="event.preventDefault();removeLine(${p.id})">Remove</a></div></div>`}).join('')+
+    `<div class="gift-opt"><label><input type="checkbox" ${giftWrap?'checked':''} onchange="giftWrap=this.checked;updateCart()"> 🎀 Add gift wrap and a handwritten note (free)</label>${giftWrap?'<textarea rows="2" placeholder="Your message, written by hand on our card…"></textarea>':''}</div>`;
+  document.getElementById('cartFoot').innerHTML=`
+    <div class="tot"><span>Subtotal</span><span>${money(sub)}</span></div>
+    <div class="tot"><span>Shipping</span><span>${left>0?'Calculated at checkout':'Free'}</span></div>
+    <div class="tot grand"><span>Total</span><span>${money(sub)}</span></div>
+    <button class="btn btn-primary btn-block" onclick="openCheckout()">Checkout securely</button>
+    <div class="express"><button class="ap" onclick="openCheckout(1)"> Pay</button><button class="pp" onclick="openCheckout(1)">PayPal</button><button class="sp" onclick="openCheckout(1)">shop Pay</button></div>
+    <div class="secure" style="margin-top:12px">🔒 256-bit encrypted checkout · No account needed</div>`;
+}
+function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('overlay').classList.add('open');updateCart()}
+function closeAll(){document.getElementById('drawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'))}
+
+// Quick view
+function quickView(id){const p=P.find(p=>p.id===id);document.getElementById('qvBox').innerHTML=`
+  <button class="close" onclick="closeAll()" aria-label="Close">×</button>
+  <div class="qv"><div class="img" style="background:${p.bg}">${p.emoji}</div>
+  <div class="body"><span class="brand" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">${p.brand}</span><h3>${p.name}</h3>
+  <div class="rating" style="font-size:13px;color:var(--muted)"><span style="color:var(--gold)">${'★'.repeat(Math.round(p.rating))}</span> ${p.rating} · ${p.n} reviews</div>
+  <div class="price">${money(p.price)} ${p.was?`<span class="was" style="font-size:16px;color:var(--muted);text-decoration:line-through;font-weight:400">${money(p.was)}</span>`:''}</div>
+  <p>${p.desc}</p><ul>${p.bullets.map(b=>'<li>'+b+'</li>').join('')}</ul>
+  <button class="btn btn-primary btn-block" onclick="add(${p.id});closeAll();openCart()">Add to cart · ${money(p.price)}</button>
+  <div class="secure">🚚 Ships in 2 to 4 business days · 🎀 Free gift wrap · ↩︎ 30-day returns</div></div></div>`;
+  document.getElementById('overlay').classList.add('open');document.getElementById('qvModal').classList.add('open')}
+
+// Checkout
+function openCheckout(express){
+  document.getElementById('drawer').classList.remove('open');
+  const sub=subtotal(), ship=sub>=99?0:8.95, tax=+(sub*0.0925).toFixed(2);
+  document.getElementById('coBox').innerHTML=`
+  <button class="close" onclick="closeAll()" aria-label="Close">×</button>
+  <form class="checkout" onsubmit="placeOrder(event)">
+    <h3>Checkout</h3><div style="color:var(--muted);font-size:14px">Guest checkout. No account required.</div>
+    <div class="steps"><span class="on">1 · Delivery</span><span>2 · Payment</span><span>3 · Done</span></div>
+    ${express?'<div style="background:var(--green-light);color:var(--green-dark);padding:12px 14px;border-radius:10px;font-size:14px;margin-bottom:16px">✓ Express pay selected. We only need your delivery details.</div>':''}
+    <h4 style="margin-top:0">Contact</h4>
+    <div class="fgrid"><input class="full" type="email" placeholder="Email for order updates" required value="steven@example.com"></div>
+    <h4>Deliver to</h4>
+    <div class="fgrid"><input placeholder="First name" required value="Steven"><input placeholder="Last name" required value="Krane"><input class="full" placeholder="Street address" required value="123 Music Row"><input placeholder="City" required value="Nashville"><input placeholder="State" required value="TN"><input placeholder="ZIP" required value="37203"><input placeholder="Phone (for delivery questions)" value="(615) 555-0100"></div>
+    <h4>Shipping</h4>
+    <div class="ship-opts">
+      <label><span><input type="radio" name="ship" checked>Standard · 3 to 5 business days</span><b>${ship?money(ship):'Free'}</b></label>
+      <label><span><input type="radio" name="ship">Express · 2 business days</span><b>$18.95</b></label>
+    </div>
+    ${express?'':`<h4>Payment</h4><div class="fgrid"><input class="full" placeholder="Card number" value="4242 4242 4242 4242" inputmode="numeric"><input placeholder="MM / YY" value="12 / 28"><input placeholder="CVC" value="123"></div>`}
+    <div class="summary">
+      <div class="tot"><span>Items (${count()})</span><span>${money(sub)}</span></div>
+      <div class="tot"><span>Shipping</span><span>${ship?money(ship):'Free'}</span></div>
+      <div class="tot"><span>Est. tax</span><span>${money(tax)}</span></div>
+      ${giftWrap?'<div class="tot"><span>Gift wrap &amp; note</span><span>Free</span></div>':''}
+      <div class="tot grand" style="margin-bottom:0"><span>Total</span><span>${money(sub+ship+tax)}</span></div>
+    </div>
+    <button class="btn btn-green btn-block" style="margin-top:18px;font-size:16px" type="submit">Place order · ${money(sub+ship+tax)}</button>
+    <div class="secure">🔒 Secure checkout. This is a demo; no card is charged.</div>
+  </form>`;
+  document.getElementById('overlay').classList.add('open');document.getElementById('coModal').classList.add('open');document.getElementById('coBox').scrollTop=0}
+function placeOrder(e){e.preventDefault();const n='LG-'+Math.floor(100000+Math.random()*900000);
+  document.getElementById('coBox').innerHTML=`<button class="close" onclick="closeAll()" aria-label="Close">×</button><div class="thanks"><div class="big">🎉</div><h3>Thank you, Steven!</h3><p>Your gift is on its way to being wrapped.</p><div class="order">Order ${n}</div><p>We emailed your receipt and will send tracking the moment it ships, usually within 2 business days.</p><p style="margin-top:18px"><button class="btn btn-primary" onclick="closeAll()">Keep browsing</button></p></div>`;
+  cart=[];giftWrap=false;updateCart()}
+
+// Toast
+let tt;function toast(msg,action,fn){const t=document.getElementById('toast');t.innerHTML=msg+(action?` <button onclick="(${fn})();this.parentNode.classList.remove('show')">${action}</button>`:'');t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3200)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+render();updateCart();
+</script>
+</body>
+</html>
